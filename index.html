@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DoorDrop - Letterbox Delivery, Done Right</title>
+    <meta name="description" content="DoorDrop connects businesses with verified local walkers for GPS-tracked letterbox delivery across Australia. Flyers, menus, brochures — delivered with proof." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              "dd-primary": "#10B981",
+              "dd-secondary": "#3B82F6",
+              "dd-dark": "#0F172A",
+              "dd-light": "#F8FAFC",
+              "glass-white": "rgba(255, 255, 255, 0.7)",
+              "glass-dark": "rgba(15, 23, 42, 0.8)",
+            },
+            backgroundImage: {
+              "hero-pattern":
+                "url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&auto=format&fit=crop&q=80')",
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
+            animation: {
+              "pulse-slow": "pulse 6s ease-in-out infinite",
+              "slide-up":
+                "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              "fade-in": "fade-in 1s ease-out forwards",
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              "slide-up": {
+                "0%": { transform: "translateY(40px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              "fade-in": {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body
+    class="bg-dd-light text-slate-800 antialiased selection:bg-dd-primary selection:text-white"
+  >
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full top-0 z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div
+        class="absolute inset-0 bg-white/70 backdrop-blur-md shadow-sm border-b border-white/20"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-2 group">
+            <img
+              src="assets/logo.svg"
+              alt="DoorDrop Logo"
+              class="h-10 transform group-hover:scale-105 transition-transform duration-300"
+            />
+            <span class="font-bold text-xl text-slate-900 tracking-tight">DoorDrop</span>
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8 items-center">
+            <a
+              href="#about"
+              class="text-slate-600 font-medium hover:text-dd-primary transition-colors"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="text-slate-600 font-medium hover:text-dd-primary transition-colors"
+              >Features</a
+            >
+            <a
+              href="#how-it-works"
+              class="text-slate-600 font-medium hover:text-dd-primary transition-colors"
+              >How It Works</a
+            >
+            <a
+              href="#pricing"
+              class="text-slate-600 font-medium hover:text-dd-primary transition-colors"
+              >Pricing</a
+            >
+            <a
+              href="#testimonials"
+              class="text-slate-600 font-medium hover:text-dd-primary transition-colors"
+              >Testimonials</a
+            >
+          </div>
+
+          <!-- Desktop Buttons -->
+          <div class="hidden md:flex space-x-4 items-center">
+            <a
+              target="_blank"
+              href="https://app.doordrop.au/"
+              class="text-slate-700 font-medium hover:text-dd-primary transition-colors"
+            >
+              Sign In
+            </a>
+            <a
+              target="_blank"
+              href="https://app.doordrop.au/"
+              class="px-6 py-2.5 bg-gradient-to-r from-dd-primary to-emerald-400 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5"
+            >
+              Get Started
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <div class="md:hidden flex items-center">
+            <button
+              id="mobile-menu-button"
+              class="p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6 text-slate-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-xl"
+      >
+        <div class="px-4 py-6 space-y-4">
+          <a href="#about" class="block text-lg font-medium text-slate-700 hover:text-dd-primary">About</a>
+          <a href="#features" class="block text-lg font-medium text-slate-700 hover:text-dd-primary">Features</a>
+          <a href="#how-it-works" class="block text-lg font-medium text-slate-700 hover:text-dd-primary">How It Works</a>
+          <a href="#pricing" class="block text-lg font-medium text-slate-700 hover:text-dd-primary">Pricing</a>
+          <a href="#testimonials" class="block text-lg font-medium text-slate-700 hover:text-dd-primary">Testimonials</a>
+          <div class="pt-4 flex flex-col space-y-3">
+            <a
+              target="_blank"
+              href="https://app.doordrop.au/"
+              class="w-full text-center py-3 text-slate-700 font-semibold border border-slate-200 rounded-xl hover:bg-slate-50"
+              >Sign In</a
+            >
+            <a
+              target="_blank"
+              href="https://app.doordrop.au/"
+              class="w-full text-center py-3 bg-dd-primary text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Scroll to top button -->
+    <button
+      id="scrollUpBtn"
+      class="fixed bottom-8 right-8 bg-white text-dd-primary p-3 rounded-full shadow-2xl hover:shadow-emerald-500/40 hidden transition-all z-50 group border border-gray-100"
+    >
+      <span
+        class="material-icons group-hover:-translate-y-1 transition-transform"
+        >arrow_upward</span
+      >
+    </button>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen flex items-center relative overflow-hidden bg-dd-dark"
+    >
+      <!-- Background Elements -->
+      <div
+        class="absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-30 mix-blend-overlay"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-50"
+      ></div>
+
+      <!-- Gradient Orbs -->
+      <div
+        class="absolute top-20 left-20 w-96 h-96 bg-emerald-500/30 rounded-full blur-3xl animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-20 right-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-pulse-slow"
+        style="animation-delay: 2s"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="text-center lg:text-left">
+            <div
+              class="inline-block mb-6 px-4 py-1.5 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700 animate-slide-up"
+              style="animation-delay: 0.1s"
+            >
+              <span
+                class="text-emerald-400 font-semibold text-sm tracking-wide uppercase"
+                >GPS-Tracked Letterbox Delivery</span
+              >
+            </div>
+            <h1
+              class="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight animate-slide-up"
+              style="animation-delay: 0.2s"
+            >
+              Every Flyer.<br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400"
+                >Every Door.</span
+              >
+            </h1>
+            <p
+              class="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-slide-up"
+              style="animation-delay: 0.3s"
+            >
+              DoorDrop connects Australian businesses with verified local walkers
+              for letterbox delivery you can see and trust. Real-time tracking,
+              photo proof, and campaign analytics built in.
+            </p>
+
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up"
+              style="animation-delay: 0.4s"
+            >
+              <a
+                target="_blank"
+                href="https://app.doordrop.au/"
+                class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
+              >
+                <span>Create a Campaign</span>
+                <span class="material-icons text-sm">arrow_forward</span>
+              </a>
+              <a
+                target="_blank"
+                href="https://app.doordrop.au/"
+                class="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+              >
+                <span>Become a Walker</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="hidden lg:block relative animate-fade-in"
+            style="animation-delay: 0.5s"
+          >
+            <!-- Glass Card Illustration -->
+            <div
+              class="relative z-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-2xl animate-float"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1616578738046-8e6ae1ca797b?w=800&auto=format&fit=crop&q=80"
+                alt="Letterbox delivery"
+                class="rounded-2xl shadow-lg w-full h-auto"
+              />
+
+              <!-- Floating Badge 1 -->
+              <div
+                class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce"
+                style="animation-duration: 3s"
+              >
+                <div
+                  class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600"
+                >
+                  <span class="material-icons">verified</span>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 font-semibold">Delivered</div>
+                  <div class="text-slate-900 font-bold">100%</div>
+                </div>
+              </div>
+
+              <!-- Floating Badge 2 -->
+              <div
+                class="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce"
+                style="animation-duration: 4s"
+              >
+                <div
+                  class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"
+                >
+                  <span class="material-icons">my_location</span>
+                </div>
+                <div class="text-xs font-bold text-slate-700">GPS Tracked</div>
+              </div>
+            </div>
+
+            <!-- Decorative elements behind -->
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl -z-10"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave Separator -->
+      <div
+        class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180"
+      >
+        <svg
+          class="relative block w-[calc(100%+1.3px)] h-[60px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="fill-dd-light"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-dd-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20 max-w-3xl mx-auto">
+          <h2
+            class="text-base text-emerald-600 font-semibold tracking-wide uppercase mb-2"
+          >
+            Why DoorDrop
+          </h2>
+          <h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+            Letterbox Delivery You Can Trust
+          </h3>
+          <p class="text-xl text-slate-600 leading-relaxed">
+            Traditional letterbox drops are a black box. With
+            <span class="text-slate-900 font-semibold">DoorDrop</span>, every
+            delivery is GPS-verified, every door is tracked, and every campaign
+            has real-time analytics.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Stat Card 1 -->
+          <div
+            class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow text-center group"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-icons text-3xl">markunread_mailbox</span>
+            </div>
+            <div class="text-4xl font-extrabold text-slate-900 mb-2">50k+</div>
+            <p class="text-slate-500 font-medium">Doors Delivered</p>
+          </div>
+          <!-- Stat Card 2 -->
+          <div
+            class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow text-center group"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-icons text-3xl">directions_walk</span>
+            </div>
+            <div class="text-4xl font-extrabold text-slate-900 mb-2">200+</div>
+            <p class="text-slate-500 font-medium">Verified Walkers</p>
+          </div>
+          <!-- Stat Card 3 -->
+          <div
+            class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow text-center group"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-600 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-icons text-3xl">location_city</span>
+            </div>
+            <div class="text-4xl font-extrabold text-slate-900 mb-2">100+</div>
+            <p class="text-slate-500 font-medium">Suburbs Covered</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-white relative overflow-hidden">
+      <!-- Background Blobs -->
+      <div
+        class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-20 max-w-3xl mx-auto">
+          <h2
+            class="text-base text-blue-600 font-semibold tracking-wide uppercase mb-2"
+          >
+            Platform Features
+          </h2>
+          <h3 class="text-4xl font-bold text-slate-900 mb-6">
+            Built for Businesses &amp; Walkers
+          </h3>
+          <p class="text-xl text-slate-600">
+            Everything you need to run, track, and optimise letterbox delivery
+            campaigns.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-emerald-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">my_location</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">
+              GPS Door Tracking
+            </h4>
+            <p class="text-slate-600 leading-relaxed">
+              Every delivery is logged with GPS coordinates. See exactly which
+              doors were hit on a live map.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-blue-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">campaign</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">Campaign Manager</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Create campaigns, select streets, set budgets, and track
+              progress from a single dashboard.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-purple-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">verified_user</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">
+              Verified Walkers
+            </h4>
+            <p class="text-slate-600 leading-relaxed">
+              Every walker is verified with police checks, WWCC, and ABN.
+              Review ratings before you assign.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">analytics</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">Real-Time Analytics</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Track delivery rates, walker performance, and campaign ROI with
+              live dashboards and reports.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-cyan-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">map</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">Street-Level Targeting</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Pick specific streets and addresses. Auto-import from
+              OpenStreetMap or add them manually.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:border-teal-200 transition-all duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-400 to-green-500 flex items-center justify-center text-white mb-6 transform group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-icons text-2xl">star</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-3">Ratings &amp; Reviews</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Rate your walker after every campaign. Build trust in the
+              community with transparent feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section
+      id="how-it-works"
+      class="py-24 bg-gray-900 text-white relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">How It Works</h2>
+          <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+            From campaign setup to delivery proof in three simple steps
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12 relative z-10">
+          <!-- Step 1 -->
+          <div
+            class="step-card group bg-gray-800/70 backdrop-blur-md rounded-3xl p-10 text-center shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">add_location_alt</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Create Your Campaign</h3>
+            <p class="text-gray-300 text-lg">
+              Set your suburb, select streets, upload your flyer design, and
+              set your budget and due date.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="step-card group bg-gray-800/70 backdrop-blur-md rounded-3xl p-10 text-center shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">person_search</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Match with a Walker</h3>
+            <p class="text-gray-300 text-lg">
+              Local walkers express interest. Review profiles, ratings, and
+              verification badges, then assign your pick.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="step-card group bg-gray-800/70 backdrop-blur-md rounded-3xl p-10 text-center shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-teal-400 to-green-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">task_alt</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Track &amp; Verify</h3>
+            <p class="text-gray-300 text-lg">
+              Watch deliveries in real time on the map. Every door is checked
+              off with GPS proof. Review your walker when complete.
+            </p>
+          </div>
+        </div>
+
+        <!-- Decorative Floating Circles -->
+        <div
+          class="absolute top-0 left-1/4 w-40 h-40 bg-gradient-to-r from-emerald-400 to-teal-500 opacity-20 rounded-full animate-pulse-slow"
+        ></div>
+        <div
+          class="absolute bottom-0 right-1/3 w-60 h-60 bg-gradient-to-r from-blue-400 to-indigo-500 opacity-20 rounded-full animate-pulse-slow"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-white relative overflow-hidden">
+      <div
+        class="absolute -top-20 right-0 w-[420px] h-[420px] bg-emerald-100 rounded-full blur-3xl opacity-70 translate-x-1/3"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2
+            class="text-base text-emerald-600 font-semibold tracking-wide uppercase mb-2"
+          >
+            Simple Pricing
+          </h2>
+          <h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+            Pay Per Door. No Surprises.
+          </h3>
+          <p class="text-xl text-slate-600">
+            Only pay for what gets delivered. Set your own budget and rate per
+            door.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Starter -->
+          <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow">
+            <h4 class="text-lg font-bold text-slate-900 mb-2">Starter</h4>
+            <p class="text-sm text-slate-500 mb-4">Perfect for small drops</p>
+            <div class="text-4xl font-extrabold text-slate-900 mb-1">$0.15</div>
+            <p class="text-sm text-slate-500 mb-6">per door (from)</p>
+            <ul class="space-y-2 text-sm text-slate-600 mb-8">
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Up to 500 doors</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>GPS delivery tracking</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Walker matching</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Campaign dashboard</li>
+            </ul>
+            <a target="_blank" href="https://app.doordrop.au/"
+              class="block text-center px-6 py-3 border-2 border-emerald-500 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Pro -->
+          <div class="p-8 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl shadow-xl text-white relative">
+            <div class="absolute -top-3 right-6 px-3 py-1 bg-white text-emerald-600 text-xs font-bold rounded-full shadow-md">Popular</div>
+            <h4 class="text-lg font-bold mb-2">Pro</h4>
+            <p class="text-sm text-emerald-100 mb-4">For growing businesses</p>
+            <div class="text-4xl font-extrabold mb-1">$0.12</div>
+            <p class="text-sm text-emerald-100 mb-6">per door (from)</p>
+            <ul class="space-y-2 text-sm text-emerald-50 mb-8">
+              <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Up to 5,000 doors</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Priority walker matching</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Multi-printout versions</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Campaign analytics</li>
+            </ul>
+            <a target="_blank" href="https://app.doordrop.au/"
+              class="block text-center px-6 py-3 bg-white text-emerald-600 rounded-xl font-bold hover:shadow-lg transition-all">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow">
+            <h4 class="text-lg font-bold text-slate-900 mb-2">Enterprise</h4>
+            <p class="text-sm text-slate-500 mb-4">Volume campaigns</p>
+            <div class="text-4xl font-extrabold text-slate-900 mb-1">Custom</div>
+            <p class="text-sm text-slate-500 mb-6">tailored to your needs</p>
+            <ul class="space-y-2 text-sm text-slate-600 mb-8">
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Unlimited doors</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Dedicated walker team</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>API access</li>
+              <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Account manager</li>
+            </ul>
+            <a target="_blank" href="https://app.doordrop.au/"
+              class="block text-center px-6 py-3 border-2 border-emerald-500 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Is This For Section -->
+    <section
+      class="py-24 relative bg-gradient-to-r from-emerald-700 to-teal-700 overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-10 w-48 h-48 bg-emerald-400 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-0 right-20 w-64 h-64 bg-teal-400 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-white"
+      >
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
+          Who Is DoorDrop For?
+        </h2>
+        <p class="text-xl mb-12 max-w-3xl mx-auto">
+          Whether you're sending flyers or delivering them,
+          <span class="font-bold">DoorDrop has you covered</span>
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="group bg-white/10 backdrop-blur-md p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">storefront</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Local Businesses</h3>
+            <p class="text-sm text-gray-200">Cafes, tradies, gyms, real estate</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="group bg-white/10 backdrop-blur-md p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">apartment</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Marketing Agencies</h3>
+            <p class="text-sm text-gray-200">Managing campaigns for clients</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="group bg-white/10 backdrop-blur-md p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">directions_walk</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Walkers</h3>
+            <p class="text-sm text-gray-200">Earn flexible income in your area</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="group bg-white/10 backdrop-blur-md p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[20deg]"
+            >
+              <span class="material-icons">volunteer_activism</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Community Groups</h3>
+            <p class="text-sm text-gray-200">Distribute newsletters &amp; event flyers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section
+      id="testimonials"
+      class="py-24 bg-gradient-to-r from-gray-50 to-gray-100 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-10 left-10 w-40 h-40 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-10 right-20 w-60 h-60 bg-gradient-to-r from-blue-300 to-green-300 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+            What Our Users Say
+          </h2>
+          <p class="text-xl text-gray-600">
+            Trusted by businesses and walkers across Australia
+          </p>
+        </div>
+
+        <div class="swiper testimonialsSwiper relative">
+          <div class="swiper-wrapper min-h-[300px] px-8">
+            <!-- Slide 1 -->
+            <div class="swiper-slide px-6 flex flex-col justify-between">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
+                <div class="ml-4">
+                  <div class="font-semibold text-gray-900">Tom H.</div>
+                  <div class="text-gray-600 text-sm">Owner, Tom's Pizza</div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-lg mb-4 leading-relaxed max-w-md">
+                "We used to have no idea if our menus actually reached letterboxes. DoorDrop changed everything &mdash; I can see every delivery on the map."
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="flex text-yellow-400">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </div>
+                <div class="text-gray-700 font-semibold text-sm">5/5</div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide px-6 flex flex-col justify-between">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">J</div>
+                <div class="ml-4">
+                  <div class="font-semibold text-gray-900">Jessica L.</div>
+                  <div class="text-gray-600 text-sm">Walker, Inner West Sydney</div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-lg mb-4 leading-relaxed max-w-md">
+                "Great way to earn extra income while staying active. The app is easy to use and I pick jobs in my own neighbourhood."
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="flex text-yellow-400">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </div>
+                <div class="text-gray-700 font-semibold text-sm">5/5</div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide px-6 flex flex-col justify-between">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                <div class="ml-4">
+                  <div class="font-semibold text-gray-900">Mark P.</div>
+                  <div class="text-gray-600 text-sm">Agent, RE/MAX Bondi</div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-lg mb-4 leading-relaxed max-w-md">
+                "I run letterbox campaigns every month. DoorDrop's street targeting saved me hours and the delivery reports are gold."
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="flex text-yellow-400">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </div>
+                <div class="text-gray-700 font-semibold text-sm">5/5</div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide px-6 flex flex-col justify-between">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
+                <div class="ml-4">
+                  <div class="font-semibold text-gray-900">Sarah K.</div>
+                  <div class="text-gray-600 text-sm">Owner, Bloom Fitness</div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-lg mb-4 leading-relaxed max-w-md">
+                "We got 40 new sign-ups from our first DoorDrop campaign. Way more effective than social media ads for local reach."
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="flex text-yellow-400">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </div>
+                <div class="text-gray-700 font-semibold text-sm">5/5</div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide px-6 flex flex-col justify-between">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-green-500 rounded-full flex items-center justify-center text-white font-bold">D</div>
+                <div class="ml-4">
+                  <div class="font-semibold text-gray-900">David W.</div>
+                  <div class="text-gray-600 text-sm">Walker, Northern Beaches</div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-lg mb-4 leading-relaxed max-w-md">
+                "Flexible hours, good pay, and I love being outdoors. The delivery tracking keeps everything transparent."
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="flex text-yellow-400">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </div>
+                <div class="text-gray-700 font-semibold text-sm">5/5</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swiper Pagination -->
+          <div class="swiper-pagination mt-12"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">
+          Frequently Asked Questions
+        </h2>
+
+        <div class="space-y-4">
+          <div class="faq-item border rounded-xl p-5 bg-white cursor-pointer">
+            <div class="faq-question flex justify-between items-center">
+              <span class="text-gray-900 font-medium">What is DoorDrop?</span>
+              <span class="faq-icon text-2xl font-bold text-gray-500">+</span>
+            </div>
+            <div class="faq-answer mt-3 text-gray-600">
+              DoorDrop is an Australian platform that connects businesses needing letterbox delivery with verified local walkers. Every delivery is GPS-tracked and reported in real time.
+            </div>
+          </div>
+
+          <div class="faq-item border rounded-xl p-5 bg-white cursor-pointer">
+            <div class="faq-question flex justify-between items-center">
+              <span class="text-gray-900 font-medium">How much does it cost?</span>
+              <span class="faq-icon text-2xl font-bold text-gray-500">+</span>
+            </div>
+            <div class="faq-answer mt-3 text-gray-600">
+              Pricing starts from $0.12 per door depending on volume. You set your budget and rate per door when creating a campaign. There are no hidden fees.
+            </div>
+          </div>
+
+          <div class="faq-item border rounded-xl p-5 bg-white cursor-pointer">
+            <div class="faq-question flex justify-between items-center">
+              <span class="text-gray-900 font-medium">How do I become a walker?</span>
+              <span class="faq-icon text-2xl font-bold text-gray-500">+</span>
+            </div>
+            <div class="faq-answer mt-3 text-gray-600">
+              Sign up on the app, complete your walker profile with your suburb, availability, and verification documents (police check, WWCC, ABN are optional but recommended), and start browsing available campaigns in your area.
+            </div>
+          </div>
+
+          <div class="faq-item border rounded-xl p-5 bg-white cursor-pointer">
+            <div class="faq-question flex justify-between items-center">
+              <span class="text-gray-900 font-medium">How do I know my flyers were delivered?</span>
+              <span class="faq-icon text-2xl font-bold text-gray-500">+</span>
+            </div>
+            <div class="faq-answer mt-3 text-gray-600">
+              Every delivery is recorded with GPS coordinates on a live map. You can see exactly which doors were delivered to, when, and by whom. Campaign dashboards show real-time progress.
+            </div>
+          </div>
+
+          <div class="faq-item border rounded-xl p-5 bg-white cursor-pointer">
+            <div class="faq-question flex justify-between items-center">
+              <span class="text-gray-900 font-medium">Which areas do you cover?</span>
+              <span class="faq-icon text-2xl font-bold text-gray-500">+</span>
+            </div>
+            <div class="faq-answer mt-3 text-gray-600">
+              DoorDrop operates across Australian suburbs. Coverage depends on walker availability in your area. Major metro areas like Sydney, Melbourne, Brisbane, and Perth have the most walkers.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="py-24 bg-gradient-to-r from-emerald-500 to-teal-600 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-10 w-48 h-48 bg-emerald-300 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-0 right-10 w-64 h-64 bg-teal-300 opacity-20 rounded-full animate-pulse-slow"
+      ></div>
+
+      <div
+        class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10 text-white"
+      >
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
+          Ready to Reach Every Door?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Join hundreds of Australian businesses using DoorDrop for GPS-tracked
+          letterbox delivery. Your first campaign is minutes away.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            target="_blank"
+            href="https://app.doordrop.au/"
+            class="px-8 py-4 bg-white text-emerald-600 rounded-2xl font-bold hover:shadow-xl transition-all text-lg"
+          >
+            Create a Campaign
+          </a>
+          <a
+            target="_blank"
+            href="https://app.doordrop.au/"
+            class="px-8 py-4 border-2 border-white text-white rounded-2xl font-semibold hover:bg-white hover:text-emerald-600 transition-all text-lg"
+          >
+            Become a Walker
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <img src="assets/logo.svg" alt="DoorDrop" class="h-10" />
+              <span class="font-bold text-xl">DoorDrop</span>
+            </div>
+            <p class="text-gray-400 mb-4 italic">
+              Letterbox Delivery, Done Right.
+            </p>
+            <p class="text-gray-400">
+              &copy; 2026 DoorDrop. All rights reserved.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Company</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms of Use</a>
+              </li>
+              <li>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
