@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=https://app.doordrop.space/" />
+    <script>
+      (function () {
+        const targetOrigin = "https://app.doordrop.space";
+        if (window.location.origin !== targetOrigin) {
+          const targetUrl =
+            targetOrigin +
+            window.location.pathname +
+            window.location.search +
+            window.location.hash;
+          window.location.replace(targetUrl);
+        }
+      })();
+    </script>
     <title>DoorDrop - Letterbox Delivery, Done Right</title>
     <meta name="description" content="DoorDrop connects businesses with verified local walkers for GPS-tracked letterbox delivery across Australia. Flyers, menus, brochures — delivered with proof." />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -82,6 +96,14 @@
   <body
     class="bg-dd-light text-slate-800 antialiased selection:bg-dd-primary selection:text-white"
   >
+    <noscript>
+      <div class="p-4 bg-yellow-50 text-slate-900 text-center">
+        DoorDrop has moved. Continue to
+        <a class="underline font-semibold" href="https://app.doordrop.space/"
+          >app.doordrop.space</a
+        >.
+      </div>
+    </noscript>
     <!-- Navigation -->
     <nav
       class="fixed w-full top-0 z-50 transition-all duration-300"
@@ -135,14 +157,14 @@
           <div class="hidden md:flex space-x-4 items-center">
             <a
               target="_blank"
-              href="https://app.doordrop.au/"
+              href="https://app.doordrop.space/"
               class="text-slate-700 font-medium hover:text-dd-primary transition-colors"
             >
               Sign In
             </a>
             <a
               target="_blank"
-              href="https://app.doordrop.au/"
+              href="https://app.doordrop.space/"
               class="px-6 py-2.5 bg-gradient-to-r from-dd-primary to-emerald-400 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5"
             >
               Get Started
@@ -187,13 +209,13 @@
           <div class="pt-4 flex flex-col space-y-3">
             <a
               target="_blank"
-              href="https://app.doordrop.au/"
+              href="https://app.doordrop.space/"
               class="w-full text-center py-3 text-slate-700 font-semibold border border-slate-200 rounded-xl hover:bg-slate-50"
               >Sign In</a
             >
             <a
               target="_blank"
-              href="https://app.doordrop.au/"
+              href="https://app.doordrop.space/"
               class="w-full text-center py-3 bg-dd-primary text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20"
               >Get Started</a
             >
@@ -271,7 +293,7 @@
             >
               <a
                 target="_blank"
-                href="https://app.doordrop.au/"
+                href="https://app.doordrop.space/"
                 class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
               >
                 <span>Create a Campaign</span>
@@ -279,7 +301,7 @@
               </a>
               <a
                 target="_blank"
-                href="https://app.doordrop.au/"
+                href="https://app.doordrop.space/"
                 class="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
               >
                 <span>Become a Walker</span>
@@ -656,7 +678,7 @@
               <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Walker matching</li>
               <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Campaign dashboard</li>
             </ul>
-            <a target="_blank" href="https://app.doordrop.au/"
+            <a target="_blank" href="https://app.doordrop.space/"
               class="block text-center px-6 py-3 border-2 border-emerald-500 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
               Get Started
             </a>
@@ -675,7 +697,7 @@
               <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Multi-printout versions</li>
               <li class="flex items-start gap-2"><span class="material-icons text-white text-base">check_circle</span>Campaign analytics</li>
             </ul>
-            <a target="_blank" href="https://app.doordrop.au/"
+            <a target="_blank" href="https://app.doordrop.space/"
               class="block text-center px-6 py-3 bg-white text-emerald-600 rounded-xl font-bold hover:shadow-lg transition-all">
               Get Started
             </a>
@@ -693,7 +715,7 @@
               <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>API access</li>
               <li class="flex items-start gap-2"><span class="material-icons text-emerald-500 text-base">check_circle</span>Account manager</li>
             </ul>
-            <a target="_blank" href="https://app.doordrop.au/"
+            <a target="_blank" href="https://app.doordrop.space/"
               class="block text-center px-6 py-3 border-2 border-emerald-500 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
               Contact Us
             </a>
@@ -1016,14 +1038,14 @@
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             target="_blank"
-            href="https://app.doordrop.au/"
+            href="https://app.doordrop.space/"
             class="px-8 py-4 bg-white text-emerald-600 rounded-2xl font-bold hover:shadow-xl transition-all text-lg"
           >
             Create a Campaign
           </a>
           <a
             target="_blank"
-            href="https://app.doordrop.au/"
+            href="https://app.doordrop.space/"
             class="px-8 py-4 border-2 border-white text-white rounded-2xl font-semibold hover:bg-white hover:text-emerald-600 transition-all text-lg"
           >
             Become a Walker
